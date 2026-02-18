@@ -36,6 +36,10 @@ Thumbs.db
 # Logs
 *.log
 
+# Security scan artifacts
+*.sarif
+eslint-results.sarif
+
 # Coverage
 .coverage
 coverage.xml
