@@ -48,9 +48,24 @@ jobs:
         env:
           SARIF_ESLINT_IGNORE_SUPPRESSED: "true"
         run: |
-          npx eslint src --ext .ts --format @microsoft/eslint-formatter-sarif --output-file eslint-results.sarif || true
+          npx eslint "src/**/*.ts" --config .eslintrc.cjs --no-error-on-unmatched-pattern --format @microsoft/eslint-formatter-sarif --output-file eslint-results.sarif || true
           if [ ! -f eslint-results.sarif ]; then
-            echo '{"version":"2.1.0","runs":[]}' > eslint-results.sarif
+            cat > eslint-results.sarif <<'EOF'
+            {
+              "version": "2.1.0",
+              "runs": [
+                {
+                  "tool": {
+                    "driver": {
+                      "name": "eslint",
+                      "informationUri": "https://eslint.org"
+                    }
+                  },
+                  "results": []
+                }
+              ]
+            }
+            EOF
           fi
         working-directory: packages/ts/packages/cli
         continue-on-error: true
