@@ -1,0 +1,21 @@
+{
+  "name": "@doux-ai/cli",
+  "version": "0.1.0",
+  "private": false,
+  "description": "TypeScript CLI utilities for Doux AI",
+  "type": "module",
+  "bin": {
+    "doux-ts": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "commander": "^13.0.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.20.0",
+    "typescript": "^5.8.2"
+  }
+}

@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "doux-ai"
+version = "0.1.0"
+description = "Local-first OSS research agent framework powered by Ollama"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{name = "Doux AI"}]
+dependencies = [
+  "httpx>=0.27.0",
+  "gradio>=5.0.0"
+]
+
+[project.scripts]
+doux = "doux_ai.cli.main:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["doux_ai*"]
